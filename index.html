@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #dashboard {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .graphic {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dashboard">
+        <div class="graphic">
+            <canvas id="lineGraphic"></canvas>
+        </div>
+        
+        <div class="graphic">
+            <canvas id="barGraphic"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const barChart = document.getElementById('barGraphic');
+    const lineChart = document.getElementById('lineGraphic');
+
+    new Chart(barChart, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                borderWidth: 2,
+                backgroundColor: '#ff6384'
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                borderWidth: 2,
+                backgroundColor: '#36a2eb'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(lineChart, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                backgroundColor: '#ff6384',
+                borderColor: '#ff6384'
+            }, 
+            {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                backgroundColor: '#36a2eb',
+                borderColor: '#36a2eb'
+            }]
+        }
+    })
+</script>
